@@ -1,0 +1,23 @@
+# Ignore Object Files 
+*.o
+*.out
+
+# Ignore Binaries
+bin/
+*.exe
+
+# Ignore Libraries
+*.so
+*.a
+
+# Ignore Additional Files
+*.txt
+
+# Ignore vs code files
+.vscode/
+
+# Ignore Unnecessary Folders
+Songs/
+
+# Ignore the third party headers
+inc/miniaudio.h
