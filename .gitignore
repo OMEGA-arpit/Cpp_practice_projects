@@ -1,0 +1,25 @@
+# ── Compiled output ─────────────────────────────────────
+*.o
+*.obj
+*.out
+*.a
+*.so
+*.so.*
+
+# ── Specific build artifacts ─────────────────────────────
+BankAppSimulator
+BankTests
+BankAppSimulator.out
+BankTests.out
+
+# ── Build/intermediate directories ───────────────────────
+bin/
+build/
+
+# ── Editor & OS noise ────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
