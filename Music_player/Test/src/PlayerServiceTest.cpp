@@ -1,25 +1,28 @@
 #include "PlayerServiceTest.h"
+#include <memory>
 
 using ::testing::Return;
 using ::testing::ReturnRef;
 using ::testing::_;
 
 void GivenPlayerServiceTest::SetUp() {
-    mockMusicLibrary = new testing::NiceMock<IMockMusicLibrary>();
-    mockAudioPlayer = new testing::NiceMock<IMockAudioPlayer>();
-    mockPersistenceManager = new testing::NiceMock<IMockPersistenceManager>();
-    mockPlaylistFactory = new testing::NiceMock<IMockPlaylistFactory>();
+    auto libPtr = std::make_unique<testing::NiceMock<IMockMusicLibrary>>();
+    auto audPtr = std::make_unique<testing::NiceMock<IMockAudioPlayer>>();
+    auto perPtr = std::make_unique<testing::NiceMock<IMockPersistenceManager>>();
+    auto facPtr = std::make_unique<testing::NiceMock<IMockPlaylistFactory>>();
+
+    mockMusicLibrary     = libPtr.get();
+    mockAudioPlayer      = audPtr.get();
+    mockPersistenceManager = perPtr.get();
+    mockPlaylistFactory  = facPtr.get();
 
     playerService = new PlayerService(
-        mockMusicLibrary,
-        mockAudioPlayer,
-        mockPersistenceManager,
-        mockPlaylistFactory
-    );
+        std::move(libPtr), std::move(audPtr),
+        std::move(perPtr), std::move(facPtr));
 }
 
 void GivenPlayerServiceTest::TearDown() {
-    delete playerService;
+    delete playerService;  // also deletes all owned mocks via unique_ptr
 }
 
 TEST_F(GivenPlayerServiceTest, WhenGetAllSongsCalled_ThenDelegatesToMusicLibrary) {
@@ -113,14 +116,20 @@ TEST_F(GivenPlayerServiceTest, WhenAudioPlayerNotPlaying_ThenIsPlayingReturnsFal
 
 TEST_F(GivenPlayerServiceTest, WhenPlaylistCreated_ThenReturnsTrue) {
     IMockPlaylist* mockPlaylist = new IMockPlaylist();
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylist));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylist](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylist);
+        });
 
     EXPECT_TRUE(playerService->createPlaylist("Chill Vibes"));
 }
 
 TEST_F(GivenPlayerServiceTest, WhenSamePlaylistCreatedTwice_ThenSecondReturnsFalse) {
     IMockPlaylist* mockPlaylist = new IMockPlaylist();
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylist));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylist](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylist);
+        });
 
     playerService->createPlaylist("Chill Vibes");
     EXPECT_FALSE(playerService->createPlaylist("Chill Vibes"));
@@ -131,8 +140,12 @@ TEST_F(GivenPlayerServiceTest, WhenPlaylistDeletedAndRecreated_ThenReturnsTrue) 
     IMockPlaylist* mockPlaylistTwo = new IMockPlaylist();
 
     EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
-        .WillOnce(Return(mockPlaylistOne))
-        .WillOnce(Return(mockPlaylistTwo));
+        .WillOnce([mockPlaylistOne](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylistOne);
+        })
+        .WillOnce([mockPlaylistTwo](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylistTwo);
+        });
 
     playerService->createPlaylist("Chill Vibes");
     playerService->deletePlaylist("Chill Vibes");
@@ -142,7 +155,10 @@ TEST_F(GivenPlayerServiceTest, WhenPlaylistDeletedAndRecreated_ThenReturnsTrue) 
 
 TEST_F(GivenPlayerServiceTest, WhenExistingPlaylistDeleted_ThenReturnsTrue) {
     IMockPlaylist* mockPlaylist = new IMockPlaylist();
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylist));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylist](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylist);
+        });
 
     playerService->createPlaylist("Chill Vibes");
     EXPECT_TRUE(playerService->deletePlaylist("Chill Vibes"));
@@ -154,7 +170,10 @@ TEST_F(GivenPlayerServiceTest, WhenNonExistentPlaylistDeleted_ThenReturnsFalse) 
 
 TEST_F(GivenPlayerServiceTest, WhenActivePlaylistDeleted_ThenActivePlaylistBecomesNull) {
     IMockPlaylist* mockPlaylist = new IMockPlaylist();
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylist));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylist](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylist);
+        });
 
     playerService->createPlaylist("Chill Vibes");
     playerService->selectPlaylist("Chill Vibes");
@@ -166,7 +185,10 @@ TEST_F(GivenPlayerServiceTest, WhenActivePlaylistDeleted_ThenActivePlaylistBecom
 
 TEST_F(GivenPlayerServiceTest, WhenExistingPlaylistSelected_ThenReturnsTrue) {
     IMockPlaylist* mockPlaylist = new IMockPlaylist();
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylist));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylist](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylist);
+        });
 
     playerService->createPlaylist("Chill Vibes");
     EXPECT_TRUE(playerService->selectPlaylist("Chill Vibes"));
@@ -183,7 +205,10 @@ TEST_F(GivenPlayerServiceTest, WhenNoPlaylistSelected_ThenActivePlaylistIsNull) 
 
 TEST_F(GivenPlayerServiceTest, WhenPlaylistSelected_ThenGetActivePlaylistReturnsIt) {
     IMockPlaylist* mockPlaylist = new IMockPlaylist();
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylist));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylist](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylist);
+        });
 
     playerService->createPlaylist("Chill Vibes");
     playerService->selectPlaylist("Chill Vibes");
@@ -200,8 +225,14 @@ TEST_F(GivenPlayerServiceTest, WhenTwoPlaylistsCreated_ThenGetPlaylistNamesRetur
     IMockPlaylist* mockPlaylistOne = new IMockPlaylist();
     IMockPlaylist* mockPlaylistTwo = new IMockPlaylist();
 
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylistOne));
-    EXPECT_CALL(*mockPlaylistFactory, create("Road Trip")).WillOnce(Return(mockPlaylistTwo));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylistOne](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylistOne);
+        });
+    EXPECT_CALL(*mockPlaylistFactory, create("Road Trip"))
+        .WillOnce([mockPlaylistTwo](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylistTwo);
+        });
 
     playerService->createPlaylist("Chill Vibes");
     playerService->createPlaylist("Road Trip");
@@ -213,8 +244,14 @@ TEST_F(GivenPlayerServiceTest, WhenTwoPlaylistsCreated_ThenGetPlaylistNamesConta
     IMockPlaylist* mockPlaylistOne = new IMockPlaylist();
     IMockPlaylist* mockPlaylistTwo = new IMockPlaylist();
 
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylistOne));
-    EXPECT_CALL(*mockPlaylistFactory, create("Road Trip")).WillOnce(Return(mockPlaylistTwo));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylistOne](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylistOne);
+        });
+    EXPECT_CALL(*mockPlaylistFactory, create("Road Trip"))
+        .WillOnce([mockPlaylistTwo](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylistTwo);
+        });
 
     playerService->createPlaylist("Chill Vibes");
     playerService->createPlaylist("Road Trip");
@@ -237,7 +274,10 @@ TEST_F(GivenPlayerServiceTest, WhenNextCalledWithActivePlaylist_ThenPlaysNextSon
     IMockPlaylist* mockPlaylist = new IMockPlaylist();
     Song nextSong("Believer", "Songs/Believer.mp3");
 
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylist));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylist](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylist);
+        });
     EXPECT_CALL(*mockPlaylist, nextSong()).WillOnce(Return(&nextSong));
     EXPECT_CALL(*mockAudioPlayer, stop());
     EXPECT_CALL(*mockAudioPlayer, play("Songs/Believer.mp3"));
@@ -250,7 +290,10 @@ TEST_F(GivenPlayerServiceTest, WhenNextCalledWithActivePlaylist_ThenPlaysNextSon
 TEST_F(GivenPlayerServiceTest, WhenNextSongReturnsNull_ThenAudioPlayerNotCalled) {
     IMockPlaylist* mockPlaylist = new IMockPlaylist();
 
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylist));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylist](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylist);
+        });
     EXPECT_CALL(*mockPlaylist, nextSong()).WillOnce(Return(nullptr));
     EXPECT_CALL(*mockAudioPlayer, play(_)).Times(0);
 
@@ -269,7 +312,10 @@ TEST_F(GivenPlayerServiceTest, WhenPreviousCalledWithActivePlaylist_ThenPlaysPre
     IMockPlaylist* mockPlaylist = new IMockPlaylist();
     Song previousSong("Aahatein", "Songs/Aahatein.mp3");
 
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylist));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylist](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylist);
+        });
     EXPECT_CALL(*mockPlaylist, previousSong()).WillOnce(Return(&previousSong));
     EXPECT_CALL(*mockAudioPlayer, stop());
     EXPECT_CALL(*mockAudioPlayer, play("Songs/Aahatein.mp3"));
@@ -282,7 +328,10 @@ TEST_F(GivenPlayerServiceTest, WhenPreviousCalledWithActivePlaylist_ThenPlaysPre
 TEST_F(GivenPlayerServiceTest, WhenPreviousSongReturnsNull_ThenAudioPlayerNotCalled) {
     IMockPlaylist* mockPlaylist = new IMockPlaylist();
 
-    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes")).WillOnce(Return(mockPlaylist));
+    EXPECT_CALL(*mockPlaylistFactory, create("Chill Vibes"))
+        .WillOnce([mockPlaylist](const std::string&){
+            return std::unique_ptr<IPlaylist>(mockPlaylist);
+        });
     EXPECT_CALL(*mockPlaylist, previousSong()).WillOnce(Return(nullptr));
     EXPECT_CALL(*mockAudioPlayer, play(_)).Times(0);
 

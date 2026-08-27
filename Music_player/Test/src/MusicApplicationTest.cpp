@@ -146,7 +146,7 @@ TEST_F(GivenMusicApplicationTest, WhenChoiceIsThreeAndSongFoundAndUserPressesPla
     EXPECT_CALL(*mockLogger, printMessage(Constants::MSG_FOUND + song.name));
     EXPECT_CALL(*mockLogger, printMessage(Constants::MSG_PLAY_PROMPT));
     EXPECT_CALL(*mockInputHandler, inputCharacter()).WillOnce(Return('p'));
-    EXPECT_CALL(*mockPlayerService, playSong(song));
+    EXPECT_CALL(*mockPlayerService, playSong(song)).WillOnce(Return(true));
     EXPECT_CALL(*mockLogger, printMessage(Constants::MSG_NOW_PLAYING + song.name));
     EXPECT_CALL(*mockLogger, printMessage(Constants::MSG_WELCOME));
     EXPECT_CALL(*mockPlayerService, loadPlaylists());

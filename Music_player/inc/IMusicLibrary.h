@@ -6,9 +6,11 @@
 #include <string>
 
 class IMusicLibrary {
-public: 
-    virtual std::set<Song>& getSongs() = 0;
-    virtual const Song* findSongByTitle(const std::string& title) = 0;
+public:
+    virtual const std::set<Song>& getSongs() const = 0;
+    virtual const Song* findSongByTitle(const std::string& title) const = 0;
+
+    virtual ~IMusicLibrary() = default;
 };
 
 #endif

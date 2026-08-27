@@ -1,28 +1,27 @@
 #include "PlayerService.h"
 
-PlayerService::PlayerService(IMusicLibrary* musicLibrary,
-                             IAudioPlayer* audioPlayer,
-                             IPersistenceManager* persistenceManager,
-                             IPlaylistFactory* playlistFactory)
-    : musicLibrary(musicLibrary)
-    , audioPlayer(audioPlayer)
-    , persistenceManager(persistenceManager)
-    , playlistFactory(playlistFactory)
+PlayerService::PlayerService(std::unique_ptr<IMusicLibrary> musicLibrary,
+                             std::unique_ptr<IAudioPlayer> audioPlayer,
+                             std::unique_ptr<IPersistenceManager> persistenceManager,
+                             std::unique_ptr<IPlaylistFactory> playlistFactory)
+    : musicLibrary(std::move(musicLibrary))
+    , audioPlayer(std::move(audioPlayer))
+    , persistenceManager(std::move(persistenceManager))
+    , playlistFactory(std::move(playlistFactory))
     , activePlaylistName(Constants::EMPTY_STRING)
 {
-    audioPlayer->setOnSongEnd([this]() {
+    this->audioPlayer->setOnSongEnd([this]() {
         this->next();
     });
 }
 
-const std::set<Song>& PlayerService::getAllSongs() {
+const std::set<Song>& PlayerService::getAllSongs() const {
     return musicLibrary->getSongs();
 }
 
-const Song* PlayerService::searchSong(const std::string& songName) {
+const Song* PlayerService::searchSong(const std::string& songName) const {
     return musicLibrary->findSongByTitle(songName);
 }
-
 
 bool PlayerService::playSong(const Song& song) {
     audioPlayer->stop();
@@ -72,101 +71,75 @@ void PlayerService::checkAndAdvance() {
     audioPlayer->checkSongEnd();
 }
 
-bool PlayerService::isPlaying() {
+bool PlayerService::isPlaying() const {
     return audioPlayer->isPlaying();
 }
 
 bool PlayerService::createPlaylist(const std::string& playlistName) {
-    bool playlistExists = (playlists.find(playlistName) != playlists.end());
-    bool isPlaylistCreated = false;
-
-    if (!playlistExists) 
+    if (playlists.find(playlistName) != playlists.end()) 
     {
-        playlists[playlistName] = playlistFactory->create(playlistName);
-        isPlaylistCreated = true;
+        return false;
     }
 
-    return isPlaylistCreated;
+    playlists[playlistName] = playlistFactory->create(playlistName);
+    return true;
 }
 
 bool PlayerService::deletePlaylist(const std::string& playlistName) {
-    std::map<std::string, IPlaylist*>::iterator playlistIterator = playlists.find(playlistName);
-    bool playlistExists = (playlistIterator != playlists.end());
+    auto it = playlists.find(playlistName);
 
-    if (playlistExists) 
+    if (it == playlists.end()) 
     {
-        delete playlistIterator->second;
-        playlists.erase(playlistIterator);
-
-        if (activePlaylistName == playlistName) 
-        {
-            activePlaylistName = Constants::EMPTY_STRING;
-        }
+        return false;
     }
 
-    return playlistExists;
+    playlists.erase(it);
+
+    if (activePlaylistName == playlistName) 
+    {
+        activePlaylistName = Constants::EMPTY_STRING;
+    }
+
+    return true;
 }
 
 bool PlayerService::selectPlaylist(const std::string& playlistName) {
-    bool playlistExists = (playlists.find(playlistName) != playlists.end());
-
-    if (playlistExists) 
+    if (playlists.find(playlistName) == playlists.end()) 
     {
-        activePlaylistName = playlistName;
+        return false;
     }
 
-    return playlistExists;
+    activePlaylistName = playlistName;
+    return true;
 }
 
-std::vector<std::string> PlayerService::getPlaylistNames() {
+std::vector<std::string> PlayerService::getPlaylistNames() const {
     std::vector<std::string> playlistNames;
-    std::map<std::string, IPlaylist*>::iterator playlistIterator = playlists.begin();
+    playlistNames.reserve(playlists.size());
 
-    while (playlistIterator != playlists.end()) 
+    for (const auto& [name, playlist] : playlists) 
     {
-        playlistNames.push_back(playlistIterator->first);
-        playlistIterator++;
+        playlistNames.push_back(name);
     }
 
     return playlistNames;
 }
 
 IPlaylist* PlayerService::getActivePlaylist() {
-    IPlaylist* activePlaylist = nullptr;
-
-    if (!activePlaylistName.empty()) 
+    if (activePlaylistName.empty()) 
     {
-        std::map<std::string, IPlaylist*>::iterator playlistIterator = playlists.find(activePlaylistName);
-
-        if (playlistIterator != playlists.end()) 
-        {
-            activePlaylist = playlistIterator->second;
-        }
+        return nullptr;
     }
 
-    return activePlaylist;
+    auto it = playlists.find(activePlaylistName);
+    return (it != playlists.end()) ? it->second.get() : nullptr;
 }
 
-
 void PlayerService::loadPlaylists() {
-    persistenceManager->loadPlaylists(playlists, playlistFactory);
+    persistenceManager->loadPlaylists(playlists, playlistFactory.get());
 }
 
 void PlayerService::savePlaylists() {
     persistenceManager->savePlaylists(playlists);
 }
 
-PlayerService::~PlayerService() {
-    std::map<std::string, IPlaylist*>::iterator playlistIterator = playlists.begin();
-
-    while (playlistIterator != playlists.end()) 
-    {
-        delete playlistIterator->second;
-        playlistIterator++;
-    }
-
-    delete musicLibrary;
-    delete audioPlayer;
-    delete persistenceManager;
-    delete playlistFactory;
-}

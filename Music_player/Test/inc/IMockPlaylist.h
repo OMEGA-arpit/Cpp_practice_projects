@@ -7,10 +7,10 @@
 
 class IMockPlaylist : public IPlaylist {
 public:
-    MOCK_METHOD(std::string, getName, (), (override));
-    MOCK_METHOD(std::list<Song>&, getSongs, (), (override));
+    MOCK_METHOD(std::string, getName, (), (const, override));
+    MOCK_METHOD(const std::list<Song>&, getSongs, (), (const, override));
     MOCK_METHOD(Song*, getCurrentSong, (), (override));
-    MOCK_METHOD(Constants::PlaybackState, getState, (), (override));
+    MOCK_METHOD(Constants::PlaybackState, getState, (), (const, override));
 
     MOCK_METHOD(void, setState, (Constants::PlaybackState state), (override));
 

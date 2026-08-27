@@ -10,10 +10,12 @@
 #include "Constants.h"
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <memory>
 #include <set>
 
 class GivenMusicApplicationTest : public ::testing::Test {
 protected:
+    // Observer (non-owning) pointers — valid for the lifetime of musicApplication
     testing::NiceMock<IMockPlayerService>* mockPlayerService;
     testing::NiceMock<IMockPlaylistController>* mockPlaylistController;
     testing::NiceMock<IMockLogger>* mockLogger;
@@ -21,21 +23,23 @@ protected:
     MusicApplication* musicApplication;
 
     void SetUp() override {
-        mockPlayerService = new testing::NiceMock<IMockPlayerService>();
-        mockPlaylistController = new testing::NiceMock<IMockPlaylistController>();
-        mockLogger = new testing::NiceMock<IMockLogger>();
-        mockInputHandler = new testing::NiceMock<IMockInputHandler>();
+        auto svcPtr  = std::make_unique<testing::NiceMock<IMockPlayerService>>();
+        auto ctrlPtr = std::make_unique<testing::NiceMock<IMockPlaylistController>>();
+        auto logPtr  = std::make_unique<testing::NiceMock<IMockLogger>>();
+        auto inpPtr  = std::make_unique<testing::NiceMock<IMockInputHandler>>();
+
+        mockPlayerService      = svcPtr.get();
+        mockPlaylistController = ctrlPtr.get();
+        mockLogger             = logPtr.get();
+        mockInputHandler       = inpPtr.get();
 
         musicApplication = new MusicApplication(
-            mockPlayerService,
-            mockPlaylistController,
-            mockLogger,
-            mockInputHandler
-        );
+            std::move(svcPtr), std::move(ctrlPtr),
+            std::move(logPtr), std::move(inpPtr));
     }
 
     void TearDown() override {
-        delete musicApplication;
+        delete musicApplication;  // also deletes all owned mocks via unique_ptr
     }
 };
 

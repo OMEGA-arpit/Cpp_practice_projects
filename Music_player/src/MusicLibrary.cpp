@@ -24,17 +24,14 @@ bool MusicLibrary::loadSongsFromFolder(const std::string& folderPath) {
     return areSongsLoaded;
 }
 
-const Song* MusicLibrary::findSongByTitle(const std::string& title) {
+const Song* MusicLibrary::findSongByTitle(const std::string& title) const {
     Song searchKey(title, Constants::EMPTY_STRING);
 
-    const Song* foundSong = nullptr;
-
-    std::set<Song>::iterator songIterator = songs.find(searchKey);
+    auto songIterator = songs.find(searchKey);
 
     if (songIterator != songs.end()) 
     {
-        foundSong = &(*songIterator);
+        return &(*songIterator);
     }
-
-    return foundSong;
+    return nullptr;
 }

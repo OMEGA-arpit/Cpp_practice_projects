@@ -9,8 +9,8 @@
 
 class IPlayerService {
 public:
-    virtual const std::set<Song>& getAllSongs() = 0;
-    virtual const Song* searchSong(const std::string& title) = 0;
+    virtual const std::set<Song>& getAllSongs() const = 0;
+    virtual const Song* searchSong(const std::string& title) const = 0;
 
     virtual bool playSong(const Song& song) = 0;
     virtual void pause() = 0;
@@ -18,18 +18,18 @@ public:
     virtual void next() = 0;
     virtual void previous() = 0;
     virtual void checkAndAdvance() = 0;
-    virtual bool isPlaying() = 0;
+    virtual bool isPlaying() const = 0;
 
     virtual bool createPlaylist(const std::string& playlistName) = 0;
     virtual bool deletePlaylist(const std::string& playlistName) = 0;
     virtual bool selectPlaylist(const std::string& playlistName) = 0;
-    virtual std::vector<std::string> getPlaylistNames() = 0;
+    virtual std::vector<std::string> getPlaylistNames() const = 0;
     virtual IPlaylist* getActivePlaylist() = 0;
 
     virtual void loadPlaylists() = 0;
     virtual void savePlaylists() = 0;
 
-    virtual ~IPlayerService() {};
+    virtual ~IPlayerService() = default;
 };
 
 #endif

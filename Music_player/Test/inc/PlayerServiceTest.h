@@ -12,6 +12,7 @@
 
 class GivenPlayerServiceTest : public ::testing::Test {
 protected:
+    // Observer (non-owning) pointers — valid for the lifetime of playerService
     testing::NiceMock<IMockMusicLibrary>* mockMusicLibrary;
     testing::NiceMock<IMockAudioPlayer>* mockAudioPlayer;
     testing::NiceMock<IMockPersistenceManager>* mockPersistenceManager;

@@ -5,45 +5,37 @@
 PersistenceManager::PersistenceManager(ILogger* logger, const std::string& filePath)
     : logger(logger), filePath(filePath) {}
 
-void PersistenceManager::savePlaylist(std::ofstream& file, const std::string& playlistName, IPlaylist* playlist) {
+void PersistenceManager::savePlaylist(std::ofstream& file, const std::string& playlistName,
+                                      const IPlaylist& playlist) {
     file << Constants::PLAYLIST_PREFIX << playlistName << Constants::NEW_LINE;
 
-    std::list<Song>& songs = playlist->getSongs();
-    std::list<Song>::iterator songIterator = songs.begin();
-
-    while (songIterator != songs.end()) 
+    for (const Song& song : playlist.getSongs()) 
     {
-        file << songIterator->name << Constants::SEPARATOR << songIterator->filePath << Constants::NEW_LINE;
-        songIterator++;
+        file << song.name << Constants::SEPARATOR << song.filePath << Constants::NEW_LINE;
     }
 }
 
-void PersistenceManager::savePlaylists(std::map<std::string, IPlaylist*>& playlists) {
+void PersistenceManager::savePlaylists(const std::map<std::string, std::unique_ptr<IPlaylist>>& playlists) {
     std::ofstream file(filePath);
 
     if (!file.is_open()) 
     {
         logger->printMessage(Constants::MSG_FILE_SAVE_FAILED + filePath);
-    } 
-    else 
-    {
-        std::map<std::string, IPlaylist*>::iterator playlistIterator = playlists.begin();
+        return;
+    }
 
-        while (playlistIterator != playlists.end()) 
-        {
-            savePlaylist(file, playlistIterator->first, playlistIterator->second);
-            playlistIterator++;
-        }
+    for (const auto& [name, playlist] : playlists) 
+    {
+        savePlaylist(file, name, *playlist);
     }
 }
 
 void PersistenceManager::addSongFromLine(const std::string& line,
                                          const std::string& currentPlaylistName,
-                                         std::map<std::string, IPlaylist*>& playlists) {
+                                         std::map<std::string, std::unique_ptr<IPlaylist>>& playlists) {
     size_t separatorPosition = line.find(Constants::SEPARATOR);
-    bool separatorFound = (separatorPosition != std::string::npos);
 
-    if (separatorFound) 
+    if (separatorPosition != std::string::npos) 
     {
         Song song;
         song.name = line.substr(0, separatorPosition);
@@ -54,7 +46,7 @@ void PersistenceManager::addSongFromLine(const std::string& line,
 
 void PersistenceManager::processLine(const std::string& line,
                                      std::string& currentPlaylistName,
-                                     std::map<std::string, IPlaylist*>& playlists,
+                                     std::map<std::string, std::unique_ptr<IPlaylist>>& playlists,
                                      IPlaylistFactory* playlistFactory) {
     bool isPlaylistLine = (line.rfind(Constants::PLAYLIST_PREFIX, 0) == 0);
 
@@ -69,21 +61,22 @@ void PersistenceManager::processLine(const std::string& line,
     }
 }
 
-void PersistenceManager::loadPlaylists(std::map<std::string, IPlaylist*>& playlists, IPlaylistFactory* playlistFactory) {
+void PersistenceManager::loadPlaylists(std::map<std::string, std::unique_ptr<IPlaylist>>& playlists,
+                                       IPlaylistFactory* playlistFactory) {
     std::ifstream file(filePath);
 
     if (!file.is_open()) 
     {
         logger->printMessage(Constants::MSG_FILE_LOAD_FAILED + filePath);
-    } 
-    else 
-    {
-        std::string line;
-        std::string currentPlaylistName = Constants::EMPTY_STRING;
+        return;
+    }
 
-        while (std::getline(file, line)) 
-        {
-            processLine(line, currentPlaylistName, playlists, playlistFactory);
-        }
+    std::string line;
+    std::string currentPlaylistName = Constants::EMPTY_STRING;
+
+    while (std::getline(file, line)) 
+    {
+        processLine(line, currentPlaylistName, playlists, playlistFactory);
     }
 }
+

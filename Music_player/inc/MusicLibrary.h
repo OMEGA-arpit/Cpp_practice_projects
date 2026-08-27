@@ -12,16 +12,16 @@ class MusicLibrary : public IMusicLibrary {
 
     bool loadSongsFromFolder(const std::string& folderPath);
 
-public: 
-    MusicLibrary(const std::string& folderPath = Constants::SONGS_FOLDER_PATH) {
+public:
+    explicit MusicLibrary(const std::string& folderPath = Constants::SONGS_FOLDER_PATH) {
         loadSongsFromFolder(folderPath);
     }
 
-    std::set<Song>& getSongs() { 
-        return songs; 
+    const std::set<Song>& getSongs() const override {
+        return songs;
     }
 
-    const Song* findSongByTitle(const std::string& title);
+    const Song* findSongByTitle(const std::string& title) const override;
 };
 
 #endif

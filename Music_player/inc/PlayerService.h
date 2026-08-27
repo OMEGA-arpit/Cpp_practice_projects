@@ -2,6 +2,7 @@
 #define PLAYER_SERVICE_H
 
 #include <map>
+#include <memory>
 #include <vector>
 #include <string>
 #include "IPlayerService.h"
@@ -12,21 +13,21 @@
 #include "IPlaylist.h"
 
 class PlayerService : public IPlayerService {
-    IMusicLibrary* musicLibrary;
-    IAudioPlayer* audioPlayer;
-    IPersistenceManager* persistenceManager;
-    IPlaylistFactory* playlistFactory;
-    std::map<std::string, IPlaylist*> playlists;
+    std::unique_ptr<IMusicLibrary> musicLibrary;
+    std::unique_ptr<IAudioPlayer> audioPlayer;
+    std::unique_ptr<IPersistenceManager> persistenceManager;
+    std::unique_ptr<IPlaylistFactory> playlistFactory;
+    std::map<std::string, std::unique_ptr<IPlaylist>> playlists;
     std::string activePlaylistName;
 
 public:
-    PlayerService(IMusicLibrary* musicLibrary,
-                  IAudioPlayer* audioPlayer,
-                  IPersistenceManager* persistenceManager,
-                  IPlaylistFactory* playlistFactory);
+    PlayerService(std::unique_ptr<IMusicLibrary> musicLibrary,
+                  std::unique_ptr<IAudioPlayer> audioPlayer,
+                  std::unique_ptr<IPersistenceManager> persistenceManager,
+                  std::unique_ptr<IPlaylistFactory> playlistFactory);
 
-    const std::set<Song>& getAllSongs() override;
-    const Song* searchSong(const std::string& songName) override;
+    const std::set<Song>& getAllSongs() const override;
+    const Song* searchSong(const std::string& songName) const override;
 
     bool playSong(const Song& song) override;
     void pause() override;
@@ -34,18 +35,16 @@ public:
     void next() override;
     void previous() override;
     void checkAndAdvance() override;
-    bool isPlaying() override;
+    bool isPlaying() const override;
 
     bool createPlaylist(const std::string& playlistName) override;
     bool deletePlaylist(const std::string& playlistName) override;
     bool selectPlaylist(const std::string& playlistName) override;
-    std::vector<std::string> getPlaylistNames() override;
+    std::vector<std::string> getPlaylistNames() const override;
     IPlaylist* getActivePlaylist() override;
 
     void loadPlaylists() override;
     void savePlaylists() override;
-
-    ~PlayerService();
 };
 
 #endif

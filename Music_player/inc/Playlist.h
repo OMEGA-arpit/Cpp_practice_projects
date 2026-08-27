@@ -11,26 +11,25 @@ class Playlist : public IPlaylist {
     std::list<Song> songs;
     std::list<Song>::iterator currentSong;
     Constants::PlaybackState state;
-    bool isInitialized;
 
     std::list<Song>::iterator findByTitle(const std::string& title);
 
 public:
-    Playlist() {}
-    
-    Playlist(const std::string& name);
+    Playlist() = default;
 
-    std::string getName() override;
-    std::list<Song>& getSongs() override;
+    explicit Playlist(const std::string& name);
+
+    std::string getName() const override;
+    const std::list<Song>& getSongs() const override;
     Song* getCurrentSong() override;
-    Constants::PlaybackState getState() override;
+    Constants::PlaybackState getState() const override;
 
     void setState(Constants::PlaybackState state) override;
 
-    bool addSong(const Song& song) override;
-    bool removeSong(const std::string& title) override;
-    bool moveSongUpward(const std::string& title) override;
-    bool moveSongDownward(const std::string& title) override;
+    [[nodiscard]] bool addSong(const Song& song) override;
+    [[nodiscard]] bool removeSong(const std::string& title) override;
+    [[nodiscard]] bool moveSongUpward(const std::string& title) override;
+    [[nodiscard]] bool moveSongDownward(const std::string& title) override;
 
     Song* nextSong() override;
     Song* previousSong() override;

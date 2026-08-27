@@ -1,6 +1,16 @@
 #include "MusicApplication.h"
 #include <string>
 
+MusicApplication::MusicApplication(std::unique_ptr<IPlayerService> service,
+                                   std::unique_ptr<IPlaylistController> controller,
+                                   std::unique_ptr<ILogger> logger,
+                                   std::unique_ptr<IInputHandler> inputHandler)
+    : logger(std::move(logger))
+    , inputHandler(std::move(inputHandler))
+    , playerService(std::move(service))
+    , playlistController(std::move(controller))
+{}
+
 void MusicApplication::handleViewLibrary() {
     const std::set<Song>& songs = playerService->getAllSongs();
 
@@ -124,9 +134,3 @@ void MusicApplication::handleMainMenu() {
     }
 }
 
-MusicApplication::~MusicApplication() {
-    delete playlistController;
-    delete playerService;    
-    delete logger;
-    delete inputHandler;
-}

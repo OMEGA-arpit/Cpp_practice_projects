@@ -13,9 +13,9 @@ struct MiniAudioPlayer::AudioResources {
 };
 
 MiniAudioPlayer::MiniAudioPlayer(ILogger* logger)
-    : audioResources(new AudioResources())
+    : logger(logger)
+    , audioResources(new AudioResources())
     , isCurrentlyPlaying(false)
-    , logger(logger)
 {
     if (ma_engine_init(nullptr, &audioResources->engine) != MA_SUCCESS)
     {

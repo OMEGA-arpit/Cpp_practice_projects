@@ -7,20 +7,25 @@
 #include "Logger.h"
 #include "InputHandler.h"
 #include "PlaylistController.h"
+#include <memory>
 
-MusicApplication* MusicApplicationFactory::create() {
-    ILogger* logger = new Logger();
-    IInputHandler* inputHandler = new InputHandler(logger);
+std::unique_ptr<MusicApplication> MusicApplicationFactory::create() {
+    auto logger = std::make_unique<Logger>();
+    auto inputHandler = std::make_unique<InputHandler>(logger.get());
 
-    IMusicLibrary* musicLibrary = new MusicLibrary();
-    IAudioPlayer* audioPlayer = new MiniAudioPlayer(logger);
-    IPersistenceManager* manager = new PersistenceManager(logger);
-    IPlaylistFactory* playlistFactory = new PlaylistFactory();
+    auto musicLibrary = std::make_unique<MusicLibrary>();
+    auto audioPlayer = std::make_unique<MiniAudioPlayer>(logger.get());
+    auto manager = std::make_unique<PersistenceManager>(logger.get());
+    auto playlistFactory = std::make_unique<PlaylistFactory>();
 
-    IPlayerService* service = new PlayerService(musicLibrary, audioPlayer,
-        manager, playlistFactory);
+    auto service = std::make_unique<PlayerService>(
+        std::move(musicLibrary), std::move(audioPlayer),
+        std::move(manager), std::move(playlistFactory));
 
-    IPlaylistController* controller = new PlaylistController(service, logger, inputHandler);
+    auto controller = std::make_unique<PlaylistController>(
+        service.get(), logger.get(), inputHandler.get());
 
-    return new MusicApplication(service, controller, logger, inputHandler);
+    return std::make_unique<MusicApplication>(
+        std::move(service), std::move(controller),
+        std::move(logger), std::move(inputHandler));
 }

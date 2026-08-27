@@ -6,8 +6,8 @@
 
 class IMockMusicLibrary : public IMusicLibrary {
 public:
-    MOCK_METHOD(std::set<Song>&, getSongs, (), (override));
-    MOCK_METHOD(const Song*, findSongByTitle, (const std::string& title), (override));
+    MOCK_METHOD(const std::set<Song>&, getSongs, (), (const, override));
+    MOCK_METHOD(const Song*, findSongByTitle, (const std::string& title), (const, override));
 };
 
 #endif

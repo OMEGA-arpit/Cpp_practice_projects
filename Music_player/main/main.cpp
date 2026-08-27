@@ -3,10 +3,7 @@
 
 int main() {
     MusicApplicationFactory factory;
-    MusicApplication* musicApp = factory.create();
-
+    auto musicApp = factory.create();
     musicApp->handleMainMenu();
-
-    delete musicApp;
     return 0;
 }
