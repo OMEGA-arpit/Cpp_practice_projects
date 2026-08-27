@@ -5,8 +5,8 @@ using ::testing::AtLeast;
 
 void GivenUserControllerTest::SetUp() {
     lanes.push_back(Lane(Constants::Direction::NORTH, Constants::DIRECTION_NORTH, Constants::GREEN_DURATION_SECONDS));
-    lanes.push_back(Lane(Constants::Direction::EAST,  Constants::DIRECTION_EAST,  Constants::GREEN_DURATION_SECONDS));
     lanes.push_back(Lane(Constants::Direction::SOUTH, Constants::DIRECTION_SOUTH, Constants::GREEN_DURATION_SECONDS));
+    lanes.push_back(Lane(Constants::Direction::EAST,  Constants::DIRECTION_EAST,  Constants::GREEN_DURATION_SECONDS));
     lanes.push_back(Lane(Constants::Direction::WEST,  Constants::DIRECTION_WEST,  Constants::GREEN_DURATION_SECONDS));
 
     trafficState.activeLane    = Constants::Direction::NORTH;
@@ -15,7 +15,6 @@ void GivenUserControllerTest::SetUp() {
     userController = new UserController(&inputHandler, &logger, &trafficState, lanes);
 
     EXPECT_CALL(logger, printMessage(_)).Times(AnyNumber());
-    EXPECT_CALL(logger, printNewLine()).Times(AnyNumber());
 }
 
 void GivenUserControllerTest::TearDown() {
@@ -176,8 +175,8 @@ TEST_F(GivenUserControllerTest, WhenMyLaneIsNextInCycle_ThenWaitIsTimeRemaining)
     trafficState.timeRemaining = 6;
 
     EXPECT_CALL(inputHandler, inputString(_))
-        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_EAST_CHAR))
-        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_WEST_CHAR))
+        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_SOUTH_CHAR))
+        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_NORTH_CHAR))
         .WillOnce(SetArgReferee<0>("N"));
 
     EXPECT_CALL(logger, printMessage(Constants::MSG_LANE_GREEN_IN + "6" + Constants::MSG_SECONDS + Constants::NEW_LINE)).Times(1);
@@ -190,8 +189,8 @@ TEST_F(GivenUserControllerTest, WhenMyLaneIsTwoPhasesAway_ThenWaitAccumulatesCor
     trafficState.timeRemaining = 4;
 
     EXPECT_CALL(inputHandler, inputString(_))
-        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_SOUTH_CHAR))
-        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_NORTH_CHAR))
+        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_EAST_CHAR))
+        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_WEST_CHAR))
         .WillOnce(SetArgReferee<0>("N"));
 
     EXPECT_CALL(logger, printMessage(Constants::MSG_LANE_GREEN_IN + "14" + Constants::MSG_SECONDS + Constants::NEW_LINE)).Times(1);

@@ -7,18 +7,17 @@
 #include "IInputHandler.h"
 #include "ILogger.h"
 #include "TrafficState.h"
+#include <memory>
 
 class TrafficLightSystemFactory {
-    ILogger* logger;
-    IInputHandler* inputHandler;
-    TrafficState* trafficState;
-    ITrafficController* trafficController;
-    IUserController* userController;
+    std::unique_ptr<ILogger> logger;
+    std::unique_ptr<IInputHandler> inputHandler;
+    std::unique_ptr<TrafficState> trafficState;
+    std::unique_ptr<ITrafficController> trafficController;
+    std::unique_ptr<IUserController> userController;
 
 public:
-    TrafficLightSystemFactory();
-    TrafficLightSystem* createTrafficLightSystem();
-    ~TrafficLightSystemFactory();
+    std::unique_ptr<TrafficLightSystem> createTrafficLightSystem();
 };
 
 #endif

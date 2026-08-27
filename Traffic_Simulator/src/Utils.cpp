@@ -61,7 +61,7 @@ std::string Utils::directionToString(Constants::Direction direction) {
     return result;
 }
 
-bool Utils::stringToDirection(const std::string& input, Constants::Direction& outDirection) {
+bool Utils::stringToDirection(std::string_view input, Constants::Direction& outDirection) {
     bool isValid = true;
 
     if (input == Constants::DIRECTION_NORTH_CHAR || input == Constants::DIRECTION_NORTH)       

@@ -17,9 +17,9 @@ class UserController : public IUserController {
     const std::vector<Lane>& orderedLaneCycle;
 
     Constants::Direction getLane(const std::string& prompt);
-    int calculateWaitTimeInSeconds(Constants::Direction fromLane, const TrafficState& snapshot);
+    int calculateWaitTimeInSeconds(Constants::Direction fromLane, const TrafficStateSnapshot& snapshot);
     MoveResult buildMoveResult(Constants::Direction fromLane, 
-    Constants::Direction toLane, const TrafficState& snapshot);
+    Constants::Direction toLane, const TrafficStateSnapshot& snapshot);
     void displayMoveResult(const MoveResult& result);
     void processQuery(Constants::Direction fromLane, Constants::Direction toLane);
     bool askUserToContinue();

@@ -34,7 +34,7 @@ Constants::Direction UserController::getLane(const std::string& prompt) {
     return currentLane;
 }
 
-int UserController::calculateWaitTimeInSeconds(Constants::Direction fromLane, const TrafficState& snapshot) {
+int UserController::calculateWaitTimeInSeconds(Constants::Direction fromLane, const TrafficStateSnapshot& snapshot) {
     int waitSeconds = 0;
 
     int activeIndex = 0;
@@ -68,7 +68,7 @@ int UserController::calculateWaitTimeInSeconds(Constants::Direction fromLane, co
 }
 
 MoveResult UserController::buildMoveResult(Constants::Direction fromLane, 
-    Constants::Direction toLane, const TrafficState& snapshot) {
+    Constants::Direction toLane, const TrafficStateSnapshot& snapshot) {
     MoveResult result;
     result.fromLane = fromLane;
     result.toLane = toLane;
@@ -99,7 +99,7 @@ void UserController::displayMoveResult(const MoveResult& result) {
     logger->printMessage(Constants::MSG_FROM + Utils::directionToString(result.fromLane) + Constants::NEW_LINE);
     logger->printMessage(Constants::MSG_TO   + Utils::directionToString(result.toLane)   + Constants::NEW_LINE);
     logger->printMessage(Constants::MSG_MOVE + Utils::moveTypeToString(result.moveType)  + Constants::NEW_LINE);
-    logger->printNewLine();
+    logger->printMessage(std::string(1, Constants::NEW_LINE));
 
     if (result.permission == Constants::MovePermission::FREE)
     {
@@ -123,7 +123,7 @@ void UserController::displayMoveResult(const MoveResult& result) {
 }
 
 void UserController::processQuery(Constants::Direction fromLane, Constants::Direction toLane) {
-    TrafficState snapshot;
+    TrafficStateSnapshot snapshot;
     {
         std::lock_guard<std::mutex> lock(trafficState->stateMutex);
         snapshot.activeLane    = trafficState->activeLane;

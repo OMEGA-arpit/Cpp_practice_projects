@@ -12,7 +12,7 @@ struct Lane {
     Lane(Constants::Direction direction, const std::string& name, int greenLightDuration)
         : direction(direction), name(name), greenLightDuration(greenLightDuration) {}
 
-    bool operator==(const Lane& other) {
+    bool operator==(const Lane& other) const {
         return direction == other.direction;
     }
 };

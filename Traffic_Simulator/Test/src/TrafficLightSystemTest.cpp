@@ -7,7 +7,6 @@ void GivenTrafficLightSystemTest::SetUp() {
     trafficLightSystem = new TrafficLightSystem(&trafficController, &userController, &logger);
 
     EXPECT_CALL(logger, printMessage(_)).Times(AnyNumber());
-    EXPECT_CALL(logger, printNewLine()).Times(AnyNumber());
     EXPECT_CALL(trafficController, startTrafficCycle()).Times(AnyNumber()).WillRepeatedly(Return());
     EXPECT_CALL(trafficController, stopTrafficCycle()).Times(AnyNumber()).WillRepeatedly(Return());
     EXPECT_CALL(userController, handleUserQueries()).Times(AnyNumber()).WillRepeatedly(Return());

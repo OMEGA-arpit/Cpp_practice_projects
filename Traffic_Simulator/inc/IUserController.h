@@ -4,7 +4,7 @@
 class IUserController {
 public:
     virtual void handleUserQueries() = 0;
-    virtual ~IUserController() {}
+    virtual ~IUserController() = default;
 };
 
 #endif

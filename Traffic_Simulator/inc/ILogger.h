@@ -7,9 +7,8 @@
 class ILogger {
 public:
     virtual void printMessage(const std::string& message) = 0;
-    virtual void printNewLine() = 0;
 
-    virtual ~ILogger() {}
+    virtual ~ILogger() = default;
 };
 
 #endif

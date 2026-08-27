@@ -3,13 +3,14 @@
 
 #include "Constants.h"
 #include <string>
+#include <string_view>
 
 class Utils {
 public:
-    static std::string moveTypeToString(Constants::MoveType moveType);
-    static std::string directionToString(Constants::Direction direction);
-    static bool stringToDirection(const std::string& input, Constants::Direction& outDirection);
-    static Constants::MoveType determineMoveType(Constants::Direction fromLane, Constants::Direction toLane);
+    [[nodiscard]] static std::string moveTypeToString(Constants::MoveType moveType);
+    [[nodiscard]] static std::string directionToString(Constants::Direction direction);
+    [[nodiscard]] static bool stringToDirection(std::string_view input, Constants::Direction& outDirection);
+    [[nodiscard]] static Constants::MoveType determineMoveType(Constants::Direction fromLane, Constants::Direction toLane);
 };
 
 #endif

@@ -2,9 +2,11 @@
 #include "Constants.h"
 
 TrafficController::TrafficController(TrafficState* trafficState)
-    : trafficState(trafficState), activeLaneIndex(-1), isCyclingActive(false)
+    : trafficState(trafficState), activeLaneIndex(0), isCyclingActive(false)
 {
     initializeLanes();
+    // Start one position before NORTH so the first activateNextPhase() call lands on NORTH.
+    activeLaneIndex = static_cast<int>(orderedLaneCycle.size()) - 1;
 }
 
 void TrafficController::initializeLanes() {

@@ -7,7 +7,7 @@ class IInputHandler {
 public:
     virtual void inputString(std::string& input) = 0;  
      
-    virtual ~IInputHandler() {}                       
+    virtual ~IInputHandler() = default;
 };
 
 #endif

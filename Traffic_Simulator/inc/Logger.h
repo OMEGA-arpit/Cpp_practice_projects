@@ -8,7 +8,6 @@
 class Logger : public ILogger {
 public:
     void printMessage(const std::string& message) override;
-    void printNewLine() override;
 };
 
 #endif

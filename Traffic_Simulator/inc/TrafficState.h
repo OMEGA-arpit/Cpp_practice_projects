@@ -4,6 +4,12 @@
 #include "Constants.h"
 #include <mutex>
 
+// Lightweight, copyable snapshot of TrafficState captured under a lock.
+struct TrafficStateSnapshot {
+    Constants::Direction activeLane  = Constants::Direction::NORTH;
+    int timeRemaining                = Constants::GREEN_DURATION_SECONDS;
+};
+
 struct TrafficState {
     Constants::Direction activeLane;
     int timeRemaining;

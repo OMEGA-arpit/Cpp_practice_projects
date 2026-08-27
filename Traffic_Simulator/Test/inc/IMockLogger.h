@@ -7,7 +7,6 @@
 class IMockLogger : public ILogger {
 public:
     MOCK_METHOD(void, printMessage, (const std::string& message), (override));
-    MOCK_METHOD(void, printNewLine, (), (override));
 };
 
 #endif

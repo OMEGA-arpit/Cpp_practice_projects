@@ -4,8 +4,7 @@
 int main()
 {
     TrafficLightSystemFactory factory;
-    TrafficLightSystem* system = factory.createTrafficLightSystem();
+    auto system = factory.createTrafficLightSystem();
     system->initiateTrafficSystem();
-    delete system;
     return 0;
 }

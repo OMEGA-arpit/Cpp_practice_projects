@@ -24,7 +24,7 @@ namespace Constants {
     };
     
     
-    const int GREEN_DURATION_SECONDS = 10;
+    constexpr int GREEN_DURATION_SECONDS = 10;
 
     inline constexpr char NEW_LINE = '\n';
 
