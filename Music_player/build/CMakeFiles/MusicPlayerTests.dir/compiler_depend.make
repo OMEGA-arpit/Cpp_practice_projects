@@ -89,6 +89,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/main/main.cpp.o: ../Test/main/main.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -169,8 +170,11 @@ CMakeFiles/MusicPlayerTests.dir/Test/main/main.cpp.o: ../Test/main/main.cpp \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -179,6 +183,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/main/main.cpp.o: ../Test/main/main.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -215,6 +221,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/main/main.cpp.o: ../Test/main/main.cpp \
   /usr/include/c++/11/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/sys/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
@@ -254,6 +262,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/main/main.cpp.o: ../Test/main/main.cpp \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/regex.h \
@@ -421,6 +430,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MiniAudioPlayerTest.cpp.o: ../Test/src/
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -501,8 +511,11 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MiniAudioPlayerTest.cpp.o: ../Test/src/
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -511,6 +524,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MiniAudioPlayerTest.cpp.o: ../Test/src/
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -547,6 +562,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MiniAudioPlayerTest.cpp.o: ../Test/src/
   /usr/include/c++/11/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/sys/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
@@ -586,6 +603,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MiniAudioPlayerTest.cpp.o: ../Test/src/
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/regex.h \
@@ -807,6 +825,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MusicApplicationTest.cpp.o: ../Test/src
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -893,8 +912,11 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MusicApplicationTest.cpp.o: ../Test/src
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -903,6 +925,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MusicApplicationTest.cpp.o: ../Test/src
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -973,6 +997,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MusicApplicationTest.cpp.o: ../Test/src
   /usr/src/googletest/googletest/include/gtest/internal/gtest-port.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/c++/11/limits \
   /usr/include/x86_64-linux-gnu/sys/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
@@ -1010,6 +1036,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MusicApplicationTest.cpp.o: ../Test/src
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/regex.h \
@@ -1212,6 +1239,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MusicLibraryTest.cpp.o: ../Test/src/Mus
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -1292,8 +1320,11 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MusicLibraryTest.cpp.o: ../Test/src/Mus
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -1302,6 +1333,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MusicLibraryTest.cpp.o: ../Test/src/Mus
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -1338,6 +1371,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MusicLibraryTest.cpp.o: ../Test/src/Mus
   /usr/include/c++/11/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/sys/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
@@ -1377,6 +1412,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/MusicLibraryTest.cpp.o: ../Test/src/Mus
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/regex.h \
@@ -1560,6 +1596,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PersistenceManagerTest.cpp.o: ../Test/s
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -1640,8 +1677,11 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PersistenceManagerTest.cpp.o: ../Test/s
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -1650,6 +1690,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PersistenceManagerTest.cpp.o: ../Test/s
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -1686,6 +1728,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PersistenceManagerTest.cpp.o: ../Test/s
   /usr/include/c++/11/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/sys/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
@@ -1725,6 +1769,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PersistenceManagerTest.cpp.o: ../Test/s
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/regex.h \
@@ -1971,6 +2016,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlayerServiceTest.cpp.o: ../Test/src/Pl
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -2051,8 +2097,11 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlayerServiceTest.cpp.o: ../Test/src/Pl
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -2061,6 +2110,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlayerServiceTest.cpp.o: ../Test/src/Pl
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -2097,6 +2148,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlayerServiceTest.cpp.o: ../Test/src/Pl
   /usr/include/c++/11/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/sys/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
@@ -2136,6 +2189,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlayerServiceTest.cpp.o: ../Test/src/Pl
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/regex.h \
@@ -2376,6 +2430,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistControllerTest.cpp.o: ../Test/s
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -2456,8 +2511,11 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistControllerTest.cpp.o: ../Test/s
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -2466,6 +2524,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistControllerTest.cpp.o: ../Test/s
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -2502,6 +2562,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistControllerTest.cpp.o: ../Test/s
   /usr/include/c++/11/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/sys/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
@@ -2541,6 +2603,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistControllerTest.cpp.o: ../Test/s
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/regex.h \
@@ -2778,6 +2841,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistTest.cpp.o: ../Test/src/Playlis
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -2858,8 +2922,11 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistTest.cpp.o: ../Test/src/Playlis
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -2868,6 +2935,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistTest.cpp.o: ../Test/src/Playlis
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -2904,6 +2973,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistTest.cpp.o: ../Test/src/Playlis
   /usr/include/c++/11/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/sys/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
@@ -2943,6 +3014,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistTest.cpp.o: ../Test/src/Playlis
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/regex.h \
@@ -3117,6 +3189,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/allocated_ptr.h \
@@ -3197,8 +3270,11 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
@@ -3207,6 +3283,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/11/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -3243,6 +3321,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
   /usr/include/c++/11/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/sys/stat.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
@@ -3282,6 +3362,7 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/linux/close_range.h \
   /usr/include/regex.h \
@@ -3450,8 +3531,6 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
-/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
-
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
@@ -3490,8 +3569,6 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/src/googletest/googletest/include/gtest/gtest_prod.h:
 
-/usr/src/googletest/googletest/include/gtest/gtest-test-part.h:
-
 /usr/include/assert.h:
 
 /usr/include/c++/11/cassert:
@@ -3527,8 +3604,6 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 /usr/src/googletest/googletest/include/gtest/internal/gtest-type-util.h:
 
 /usr/src/googletest/googletest/include/gtest/internal/gtest-string.h:
-
-/usr/src/googletest/googletest/include/gtest/internal/gtest-filepath.h:
 
 /usr/src/googletest/googlemock/include/gmock/internal/gmock-port.h:
 
@@ -3594,9 +3669,23 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/c++/11/optional:
 
-/usr/include/c++/11/ext/concurrence.h:
+/usr/include/regex.h:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
+/usr/include/linux/close_range.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
+
+../Test/inc/MusicLibraryTest.h:
+
+../Test/inc/MusicApplicationTest.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+
+../Test/inc/MiniAudioPlayerTest.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
 
 /usr/include/c++/11/pstl/pstl_config.h:
 
@@ -3614,6 +3703,12 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/c++/11/bits/locale_facets_nonio.tcc:
 
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
+/usr/include/time.h:
+
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/libintl.h:
@@ -3629,6 +3724,10 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 /usr/include/c++/11/bits/basic_string.h:
 
 /usr/include/pthread.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
+
+/usr/include/c++/11/ext/concurrence.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
@@ -3662,6 +3761,10 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
+/usr/src/googletest/googletest/include/gtest/internal/gtest-filepath.h:
+
+/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
@@ -3693,6 +3796,10 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 /usr/include/c++/11/bits/string_view.tcc:
 
 /usr/include/c++/11/bits/functional_hash.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar2.h:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
@@ -3736,6 +3843,12 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/c++/11/bits/stl_relops.h:
 
+/usr/src/googletest/googletest/include/gtest/gtest-param-test.h:
+
+/usr/include/c++/11/any:
+
+/usr/include/c++/11/bits/unique_ptr.h:
+
 /usr/include/c++/11/ostream:
 
 /usr/include/c++/11/bits/hash_bytes.h:
@@ -3766,8 +3879,6 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/c++/11/bits/stl_iterator.h:
 
-/usr/include/c++/11/cwchar:
-
 ../Test/inc/IMockPlaylist.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
@@ -3786,6 +3897,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
+
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
@@ -3796,6 +3909,12 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/src/googletest/googletest/include/gtest/gtest.h:
 
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/c++/11/bits/exception_defines.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
+
 /usr/include/c++/11/bits/refwrap.h:
 
 /usr/include/linux/stddef.h:
@@ -3805,10 +3924,6 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
 
 /usr/include/c++/11/bits/range_access.h:
-
-../Test/inc/MiniAudioPlayerTest.h:
-
-/usr/include/x86_64-linux-gnu/bits/confname.h:
 
 /usr/include/c++/11/tr1/gamma.tcc:
 
@@ -3821,6 +3936,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
 
 /usr/include/c++/11/memory:
 
@@ -3879,8 +3996,6 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
 
 /usr/include/c++/11/debug/assertions.h:
-
-/usr/include/linux/close_range.h:
 
 /usr/include/c++/11/tr1/legendre_function.tcc:
 
@@ -3957,12 +4072,6 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 /usr/include/c++/11/bits/align.h:
 
 /usr/include/c++/11/vector:
-
-../Test/inc/MusicLibraryTest.h:
-
-../Test/inc/MusicApplicationTest.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
 
 /usr/include/c++/11/bits/predefined_ops.h:
 
@@ -4070,7 +4179,13 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 
+/usr/include/c++/11/cwchar:
+
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
 /usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/asm/types.h:
 
 /usr/include/c++/11/bits/stl_heap.h:
 
@@ -4079,6 +4194,24 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 /usr/include/c++/11/cstdio:
 
 /usr/include/stdio.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
+
+../Test/inc/PlayerServiceTest.h:
+
+/usr/include/c++/11/codecvt:
+
+/usr/include/c++/11/bits/streambuf.tcc:
+
+/usr/include/string.h:
+
+/usr/src/googletest/googletest/include/gtest/gtest-test-part.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/c++/11/bits/locale_facets.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
@@ -4130,13 +4263,11 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/c++/11/bits/locale_facets.h:
 
-/usr/include/x86_64-linux-gnu/asm/types.h:
-
 /usr/include/c++/11/bits/streambuf_iterator.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+/usr/include/linux/types.h:
 
-/usr/include/c++/11/bits/locale_facets.tcc:
+/usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
 
 /usr/include/c++/11/bits/enable_special_members.h:
 
@@ -4150,6 +4281,8 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
 /usr/include/c++/11/bits/stl_bvector.h:
 
 /usr/include/c++/11/bits/vector.tcc:
@@ -4158,27 +4291,13 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/src/googletest/googletest/include/gtest/internal/gtest-port.h:
 
-/usr/include/regex.h:
-
 /usr/include/c++/11/stdlib.h:
-
-../Test/inc/PlayerServiceTest.h:
-
-/usr/include/c++/11/codecvt:
-
-/usr/include/c++/11/bits/streambuf.tcc:
-
-/usr/include/string.h:
 
 /usr/include/c++/11/bits/stl_algobase.h:
 
 /usr/include/unistd.h:
 
 /usr/include/x86_64-linux-gnu/bits/statx.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
-
-/usr/include/linux/types.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
@@ -4210,8 +4329,6 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 
 /usr/include/c++/11/bits/locale_facets_nonio.h:
 
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
-
 /usr/include/c++/11/cxxabi.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
@@ -4219,21 +4336,3 @@ CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o: ../Test/src/SongTest.cp
 /usr/include/c++/11/bits/locale_conv.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
-
-/usr/include/c++/11/bits/exception_defines.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
-
-/usr/include/x86_64-linux-gnu/bits/environments.h:
-
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
-
-/usr/include/time.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
-
-/usr/src/googletest/googletest/include/gtest/gtest-param-test.h:
-
-/usr/include/c++/11/bits/unique_ptr.h:
-
-/usr/include/c++/11/any:

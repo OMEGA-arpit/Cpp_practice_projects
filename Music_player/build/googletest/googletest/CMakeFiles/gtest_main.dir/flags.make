@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest
 
-CXX_FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wall -Wextra -Wpedantic -DGTEST_HAS_PTHREAD=1 -std=c++17
+CXX_FLAGS = -O3 -DNDEBUG -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wall -Wextra -Wpedantic -DGTEST_HAS_PTHREAD=1 -std=c++17
 

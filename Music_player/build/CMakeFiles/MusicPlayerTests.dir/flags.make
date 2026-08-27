@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/arpit_jain2001/Learning/Practise_Projects/Music_player/inc -I/home/arpit_jain2001/Learning/Practise_Projects/Music_player/Test/inc -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest -isystem /usr/src/googletest/googlemock/include -isystem /usr/src/googletest/googlemock
 
-CXX_FLAGS = -g -Wall -Wextra -Wpedantic -DGTEST_HAS_PTHREAD=1 -std=c++17
+CXX_FLAGS = -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wno-unused-result -DGTEST_HAS_PTHREAD=1 -std=c++17
 

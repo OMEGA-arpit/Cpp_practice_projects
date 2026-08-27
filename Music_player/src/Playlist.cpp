@@ -56,12 +56,17 @@ bool Playlist::removeSong(const std::string& songTitle) {
         {
             if (songs.size() == 1) 
             {
+                // Last song removed — erase first, then reset state.
+                // We can't call songs.erase after the early return, so handle
+                // this case inline to keep the post-erase path simple.
                 songs.erase(songIterator);
                 state = Constants::PlaybackState::STOPPED;
                 return true;
             } 
             else 
             {
+                // Advance cursor to the next song before erasing. If the
+                // removed song is the last one, wrap back to the previous.
                 auto nextIterator = std::next(songIterator);
                 currentSong = (nextIterator == songs.end()) ? std::prev(songIterator) : nextIterator;
             }
@@ -111,6 +116,7 @@ Song* Playlist::nextSong() {
     }
 
     ++currentSong;
+    // Wrap: after the last element, circle back to the beginning.
     if (currentSong == songs.end()) 
     {
         currentSong = songs.begin();
@@ -124,6 +130,7 @@ Song* Playlist::previousSong() {
         return nullptr;
     }
 
+    // Wrap: if at the first element, jump to the last.
     if (currentSong == songs.begin()) 
     {
         currentSong = std::prev(songs.end());

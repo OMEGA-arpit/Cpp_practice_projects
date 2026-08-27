@@ -221,10 +221,10 @@ MusicPlayerTests: CMakeFiles/MusicPlayerTests.dir/Test/src/PlaylistTest.cpp.o
 MusicPlayerTests: CMakeFiles/MusicPlayerTests.dir/Test/src/SongTest.cpp.o
 MusicPlayerTests: CMakeFiles/MusicPlayerTests.dir/build.make
 MusicPlayerTests: libmusiclib.a
-MusicPlayerTests: lib/libgtestd.a
-MusicPlayerTests: lib/libgmockd.a
-MusicPlayerTests: lib/libgtest_maind.a
-MusicPlayerTests: lib/libgtestd.a
+MusicPlayerTests: lib/libgtest.a
+MusicPlayerTests: lib/libgmock.a
+MusicPlayerTests: lib/libgtest_main.a
+MusicPlayerTests: lib/libgtest.a
 MusicPlayerTests: CMakeFiles/MusicPlayerTests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arpit_jain2001/Learning/Practise_Projects/Music_player/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable MusicPlayerTests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MusicPlayerTests.dir/link.txt --verbose=$(VERBOSE)

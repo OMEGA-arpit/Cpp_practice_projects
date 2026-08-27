@@ -2,6 +2,17 @@
 #include "Constants.h"
 #include <fstream>
 
+// File format written by savePlaylists / read by loadPlaylists:
+//
+//   PLAYLIST:<playlist_name>
+//   <song_name>|<file_path>
+//   <song_name>|<file_path>
+//   PLAYLIST:<next_playlist_name>
+//   ...
+//
+// Lines without a '|' separator inside a playlist block are silently skipped
+// (e.g. blank lines or partial writes from a previous crash).
+
 PersistenceManager::PersistenceManager(ILogger* logger, const std::string& filePath)
     : logger(logger), filePath(filePath) {}
 

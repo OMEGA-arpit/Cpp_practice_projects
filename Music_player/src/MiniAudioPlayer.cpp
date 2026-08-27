@@ -29,6 +29,8 @@ MiniAudioPlayer::MiniAudioPlayer(ILogger* logger)
 }
 
 void MiniAudioPlayer::play(const std::string& filePath) {
+    // Uninitialise any previously loaded sound before loading the new one.
+    // miniaudio requires explicit cleanup; failing to do so leaks engine resources.
     if (audioResources->soundReady)
     {
         ma_sound_stop(&audioResources->sound);
@@ -36,6 +38,9 @@ void MiniAudioPlayer::play(const std::string& filePath) {
         audioResources->soundReady = false;
     }
 
+    // MA_SOUND_FLAG_ASYNC loads the audio data on a background thread so the
+    // main thread is not blocked while reading a large file. Playback starts
+    // immediately after the header is decoded, giving low perceived latency.
     ma_result loadResult = ma_sound_init_from_file(
         &audioResources->engine,
         filePath.c_str(),
@@ -100,6 +105,10 @@ void MiniAudioPlayer::setOnSongEnd(std::function<void()> songEndCallback) {
 }
 
 void MiniAudioPlayer::checkSongEnd() {
+    // ma_sound_is_playing returns false once the sound has decoded its last
+    // frame and stopped. We compare against our own isCurrentlyPlaying flag
+    // so the callback fires exactly once per natural track end and is not
+    // triggered after an explicit stop() or pause() call.
     if (audioResources->soundReady && isCurrentlyPlaying)
     {
         if (!ma_sound_is_playing(&audioResources->sound))

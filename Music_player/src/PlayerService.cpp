@@ -10,6 +10,11 @@ PlayerService::PlayerService(std::unique_ptr<IMusicLibrary> musicLibrary,
     , playlistFactory(std::move(playlistFactory))
     , activePlaylistName(Constants::EMPTY_STRING)
 {
+    // Register the auto-advance callback. When MiniAudioPlayer detects that a
+    // track has finished (via checkSongEnd), it fires this lambda which moves
+    // to the next song in the active playlist. The capture of 'this' is safe
+    // because the audio player is owned by this PlayerService and is always
+    // destroyed before 'this' goes out of scope.
     this->audioPlayer->setOnSongEnd([this]() {
         this->next();
     });

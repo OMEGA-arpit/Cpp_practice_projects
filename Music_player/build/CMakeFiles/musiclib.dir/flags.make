@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/arpit_jain2001/Learning/Practise_Projects/Music_player/inc
 
-CXX_FLAGS = -g -Wall -Wextra -Wpedantic -std=c++17
+CXX_FLAGS = -O3 -DNDEBUG -Wall -Wextra -Wpedantic -std=c++17
 
