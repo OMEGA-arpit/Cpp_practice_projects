@@ -29,3 +29,18 @@ TEST_F(GivenSongTest, WhenSongComparedWithItself_ThenNotLessThanItself) {
     bool result = songOne < songOne;
     EXPECT_FALSE(result);
 }
+
+// Operator ==
+
+TEST_F(GivenSongTest, WhenTwoSongsHaveSameNameAndSamePath_ThenTheyAreEqual) {
+    EXPECT_TRUE(songOne == songThree);
+}
+
+TEST_F(GivenSongTest, WhenTwoSongsHaveSameNameButDifferentPath_ThenTheyAreNotEqual) {
+    Song songWithDifferentPath("Aahatein", "Songs/AnotherFolder/Aahatein.mp3");
+    EXPECT_FALSE(songOne == songWithDifferentPath);
+}
+
+TEST_F(GivenSongTest, WhenTwoSongsHaveDifferentName_ThenTheyAreNotEqual) {
+    EXPECT_FALSE(songOne == songTwo);
+}

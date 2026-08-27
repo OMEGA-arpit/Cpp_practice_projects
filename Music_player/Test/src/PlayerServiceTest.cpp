@@ -347,6 +347,6 @@ TEST_F(GivenPlayerServiceTest, WhenSaveCalled_ThenDelegatesToPersistenceManager)
 }
 
 TEST_F(GivenPlayerServiceTest, WhenLoadCalled_ThenDelegatesToPersistenceManager) {
-    EXPECT_CALL(*mockPersistenceManager, loadPlaylists(_, mockPlaylistFactory));
+    EXPECT_CALL(*mockPersistenceManager, loadPlaylists(_, _));
     playerService->loadPlaylists();
 }

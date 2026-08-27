@@ -233,3 +233,45 @@ TEST_F(GivenPlaylistTest, WhenNonExistentSongMovedDownward_ThenReturnsFalse) {
     bool result = playlist.moveSongDownward(songTwo.name);
     EXPECT_FALSE(result);
 }
+
+// Playlist Name
+
+TEST_F(GivenPlaylistTest, WhenPlaylistCreated_ThenNameIsCorrect) {
+    EXPECT_EQ(playlist.getName(), "Test Playlist");
+}
+
+// Playback State
+
+TEST_F(GivenPlaylistTest, WhenNewPlaylistCreated_ThenDefaultStateIsStopped) {
+    EXPECT_EQ(playlist.getState(), Constants::PlaybackState::STOPPED);
+}
+
+TEST_F(GivenPlaylistTest, WhenStateSetToPlaying_ThenGetStateReturnsPlaying) {
+    playlist.setState(Constants::PlaybackState::PLAYING);
+    EXPECT_EQ(playlist.getState(), Constants::PlaybackState::PLAYING);
+}
+
+TEST_F(GivenPlaylistTest, WhenStateSetToPaused_ThenGetStateReturnsPaused) {
+    playlist.setState(Constants::PlaybackState::PAUSED);
+    EXPECT_EQ(playlist.getState(), Constants::PlaybackState::PAUSED);
+}
+
+// Duplicate Detection (by filePath, not by name)
+
+TEST_F(GivenPlaylistTest, WhenSongWithSamePathButDifferentNameAdded_ThenItIsRejected) {
+    // addSong deduplicates by filePath, not by song name
+    Song samePathDifferentName("DifferentName", songOne.filePath);
+    playlist.addSong(songOne);
+    bool result = playlist.addSong(samePathDifferentName);
+    EXPECT_FALSE(result);
+    EXPECT_EQ(playlist.getSongs().size(), 1);
+}
+
+TEST_F(GivenPlaylistTest, WhenSongWithSameNameButDifferentPathAdded_ThenBothAreStored) {
+    // Songs are only duplicates if they share a filePath
+    Song sameNameDifferentPath(songOne.name, "Songs/AnotherFolder/Aahatein.mp3");
+    playlist.addSong(songOne);
+    bool result = playlist.addSong(sameNameDifferentPath);
+    EXPECT_TRUE(result);
+    EXPECT_EQ(playlist.getSongs().size(), 2);
+}
