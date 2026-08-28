@@ -11,3 +11,9 @@ bin/
 
 # Ignore vs code files
 .vscode/
+
+# Ignore folders
+/build/
+
+# Ignore Files
+.gitignore
