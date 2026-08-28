@@ -1,3 +1,0 @@
-BankTests 0 0
----
-BankTests

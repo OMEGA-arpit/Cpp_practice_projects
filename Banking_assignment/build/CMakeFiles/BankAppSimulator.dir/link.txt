@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/BankAppSimulator.dir/main/main.cpp.o -o BankAppSimulator  libbanklib.a 
