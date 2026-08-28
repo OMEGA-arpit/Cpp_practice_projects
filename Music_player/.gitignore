@@ -21,3 +21,6 @@ Songs/
 
 # Ignore the third party headers
 inc/miniaudio.h
+
+# Ignore Build Folders
+/build/
