@@ -17,8 +17,11 @@ void TrafficController::initializeLanes() {
 }
 
 void TrafficController::activateNextPhase() {
+    // Advance to the next lane in the cycle, wrapping around to index 0 after the last.
     activeLaneIndex = (activeLaneIndex + 1) % orderedLaneCycle.size();
 
+    // Hold stateMutex only for the brief write; readers (UserController) will
+    // see the new values on their next snapshot.
     std::lock_guard<std::mutex> lock(trafficState->stateMutex);
     trafficState->activeLane = orderedLaneCycle[activeLaneIndex].direction;
     trafficState->timeRemaining = orderedLaneCycle[activeLaneIndex].greenLightDuration;
@@ -28,11 +31,12 @@ void TrafficController::countDownCurrentPhase() {
     for (int index = 0; index < Constants::GREEN_DURATION_SECONDS; index++)
     {
         std::unique_lock<std::mutex> lock(shutdownMutex);
+        // Wait up to 1 second. Returns true (early) if stopTrafficCycle() fires.
         bool shutdownRequested = shutdownSignal.wait_for(lock, std::chrono::seconds(1), [this] { return !isCyclingActive.load(); });
 
         if (shutdownRequested)
         {
-            return;
+            return;  // exit the countdown immediately on shutdown
         }
 
         std::lock_guard<std::mutex> stateLock(trafficState->stateMutex);

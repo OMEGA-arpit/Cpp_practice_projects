@@ -91,11 +91,15 @@ bool Utils::stringToDirection(std::string_view input, Constants::Direction& outD
 Constants::MoveType Utils::determineMoveType(Constants::Direction fromLane, Constants::Direction toLane) {
     using Move = Constants::MoveType;
 
+    // Precomputed lookup table indexed by [fromLane][toLane] using the Direction
+    // enum ordinal values: NORTH=0, EAST=1, SOUTH=2, WEST=3 (clockwise order).
+    //
+    //               To:  N           E           S          W
     static const Move moveTable[4][4] = {
-        { Move::UTURN,    Move::LEFT,      Move::STRAIGHT,  Move::RIGHT    },
-        { Move::RIGHT,     Move::UTURN,     Move::LEFT,     Move::STRAIGHT },
-        { Move::STRAIGHT, Move::RIGHT,     Move::UTURN,     Move::LEFT     },
-        { Move::LEFT,    Move::STRAIGHT,  Move::RIGHT,      Move::UTURN    } 
+        /* From N */  { Move::UTURN,    Move::LEFT,     Move::STRAIGHT, Move::RIGHT    },
+        /* From E */  { Move::RIGHT,    Move::UTURN,    Move::LEFT,     Move::STRAIGHT },
+        /* From S */  { Move::STRAIGHT, Move::RIGHT,    Move::UTURN,    Move::LEFT     },
+        /* From W */  { Move::LEFT,     Move::STRAIGHT, Move::RIGHT,    Move::UTURN    }
     };
     
     return moveTable[(int)fromLane][(int)toLane];

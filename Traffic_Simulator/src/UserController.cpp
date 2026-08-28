@@ -37,6 +37,7 @@ Constants::Direction UserController::getLane(const std::string& prompt) {
 int UserController::calculateWaitTimeInSeconds(Constants::Direction fromLane, const TrafficStateSnapshot& snapshot) {
     int waitSeconds = 0;
 
+    // Find the position of the currently-green lane in the cycle.
     int activeIndex = 0;
     for (int index = 0; index < (int)orderedLaneCycle.size(); index++)
     {
@@ -49,10 +50,14 @@ int UserController::calculateWaitTimeInSeconds(Constants::Direction fromLane, co
 
     if (orderedLaneCycle[activeIndex].direction == fromLane)
     {
+        // fromLane is already green — no wait needed.
         waitSeconds = 0;
     }
     else
     {
+        // Start with the remaining time on the current phase, then add the
+        // full duration of every intervening phase until we reach fromLane.
+        // The modulo handles wrap-around (e.g. WEST active, asking NORTH).
         waitSeconds = snapshot.timeRemaining;
         int totalLanes = (int)orderedLaneCycle.size();
         int current = (activeIndex + 1) % totalLanes;

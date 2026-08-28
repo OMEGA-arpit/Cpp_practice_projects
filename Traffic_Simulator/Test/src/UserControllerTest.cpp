@@ -125,6 +125,22 @@ TEST_F(GivenUserControllerTest, WhenStraightAndLaneIsGreen_ThenShowsGoMessage) {
     userController->handleUserQueries();
 }
 
+TEST_F(GivenUserControllerTest, WhenStraightAndLaneIsGreen_ThenDisplaysTimeRemaining) {
+    trafficState.activeLane = Constants::Direction::NORTH;
+    trafficState.timeRemaining = 7;
+
+    EXPECT_CALL(inputHandler, inputString(_))
+        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_NORTH_CHAR))
+        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_SOUTH_CHAR))
+        .WillOnce(SetArgReferee<0>("N"));
+
+    EXPECT_CALL(logger, printMessage(
+        Constants::MSG_TIME_REMAINING + "7" + Constants::MSG_SECONDS + Constants::NEW_LINE
+    )).Times(1);
+
+    userController->handleUserQueries();
+}
+
 TEST_F(GivenUserControllerTest, WhenRightTurnAndLaneIsGreen_ThenShowsGoMessage) {
     trafficState.activeLane = Constants::Direction::NORTH;
     trafficState.timeRemaining = 7;
@@ -164,6 +180,24 @@ TEST_F(GivenUserControllerTest, WhenRightAndLaneIsRed_ThenShowsWaitMessage) {
         .WillOnce(SetArgReferee<0>("N"));
 
     EXPECT_CALL(logger, printMessage(Constants::MSG_RED_WAIT)).Times(1);
+
+    userController->handleUserQueries();
+}
+
+TEST_F(GivenUserControllerTest, WhenLaneIsRed_ThenDisplaysCurrentGreenLaneInfo) {
+    trafficState.activeLane = Constants::Direction::EAST;
+    trafficState.timeRemaining = 5;
+
+    EXPECT_CALL(inputHandler, inputString(_))
+        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_NORTH_CHAR))
+        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_SOUTH_CHAR))
+        .WillOnce(SetArgReferee<0>("N"));
+
+    EXPECT_CALL(logger, printMessage(
+        Constants::MSG_CURRENT_GREEN + Constants::DIRECTION_EAST
+        + Constants::MSG_CAN_MOVE + Constants::PARENTHESIS + "5"
+        + Constants::MSG_SEC_REMAINING + Constants::NEW_LINE
+    )).Times(1);
 
     userController->handleUserQueries();
 }
@@ -208,6 +242,22 @@ TEST_F(GivenUserControllerTest, WhenMyLaneIsThreePhasesAway_ThenWaitAccumulatesC
         .WillOnce(SetArgReferee<0>("N"));
 
     EXPECT_CALL(logger, printMessage(Constants::MSG_LANE_GREEN_IN + "23" + Constants::MSG_SECONDS + Constants::NEW_LINE)).Times(1);
+
+    userController->handleUserQueries();
+}
+
+TEST_F(GivenUserControllerTest, WhenLaneWrapsAroundInCycle_ThenWaitIsTimeRemainingOfCurrentPhase) {
+    // WEST is last in cycle [N, S, E, W]. NORTH is first. After WEST expires,
+    // NORTH is immediately next — verifies wrap-around index arithmetic.
+    trafficState.activeLane = Constants::Direction::WEST;
+    trafficState.timeRemaining = 2;
+
+    EXPECT_CALL(inputHandler, inputString(_))
+        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_NORTH_CHAR))
+        .WillOnce(SetArgReferee<0>(Constants::DIRECTION_SOUTH_CHAR))
+        .WillOnce(SetArgReferee<0>("N"));
+
+    EXPECT_CALL(logger, printMessage(Constants::MSG_LANE_GREEN_IN + "2" + Constants::MSG_SECONDS + Constants::NEW_LINE)).Times(1);
 
     userController->handleUserQueries();
 }

@@ -55,7 +55,9 @@ TEST_F(GivenTrafficControllerTest, WhenStopCycleCalled_ThenThreadJoinsCleanly) {
     trafficController->stopTrafficCycle();
     cycleThread.join();
 
-    SUCCEED();
+    // Verify the cycle actually ran: activateNextPhase() must have been called,
+    // setting the first lane (NORTH) before the thread stopped.
+    EXPECT_EQ(trafficState.activeLane, Constants::Direction::NORTH);
 }
 
 // TrafficState after cycle runs
@@ -66,10 +68,9 @@ TEST_F(GivenTrafficControllerTest, WhenCycleRuns_ThenActiveLaneIsAlwaysAValidDir
     trafficController->stopTrafficCycle();
     cycleThread.join();
 
-    Constants::Direction lane = trafficState.activeLane;
-    bool isValid = (lane == Constants::Direction::NORTH || lane == Constants::Direction::SOUTH ||
-                    lane == Constants::Direction::EAST || lane == Constants::Direction::WEST);
-    EXPECT_TRUE(isValid);
+    // The stop signal fires well within the first 1-second countdown tick, so
+    // timeRemaining must still equal the full green duration — no decrement occurred.
+    EXPECT_EQ(trafficState.timeRemaining, Constants::GREEN_DURATION_SECONDS);
 }
 
 TEST_F(GivenTrafficControllerTest, WhenCycleRuns_ThenTimeRemainingIsWithinValidRange) {
