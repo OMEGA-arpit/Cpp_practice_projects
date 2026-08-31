@@ -1,4 +1,4 @@
-# ── Compiled output ─────────────────────────────────────
+# ── C++ Compiled output ──────────────────────────────────
 *.o
 *.obj
 *.out
@@ -6,15 +6,9 @@
 *.so
 *.so.*
 
-# ── Specific build artifacts ─────────────────────────────
-BankAppSimulator
-BankTests
-BankAppSimulator.out
-BankTests.out
-
-# ── Build/intermediate directories ───────────────────────
-bin/
+# ── Build directories ────────────────────────────────────
 build/
+bin/
 
 # ── Editor & OS noise ────────────────────────────────────
 .vscode/
